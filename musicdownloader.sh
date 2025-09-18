@@ -1,4 +1,10 @@
 #!/bin/bash
+picard=$(pacman -Qs picard) # I know this is horrible, this is temporary
+ytdlp=$(pacman -Qs yt-dlp)
+if [[ $picard == "" ]] || [[ $ytdlp == "" ]]; then
+  echo "Sudo permissions required to install necessary packages (yt-dlp, musicbrainz picard)"
+  sudo pacman -S picard yt-dlp
+fi
 while [[ $album != "q" ]]
 do
   echo "Enter title of album (or d for delete q for quit or l for list): "
